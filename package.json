@@ -18,6 +18,7 @@
   "author": "eliberty",
   "license": "ISC",
   "dependencies": {
+    "@svgr/webpack": "4.3.2",
     "bootstrap-loader": "^2.1.0",
     "bootstrap-sass": "^3.3.7",
     "immutable": "4.0.0-rc.12",
@@ -30,6 +31,8 @@
     "react-dom": "16.9.0",
     "react-intl": "3.1.13",
     "react-intl-redux": "2.1.1",
+    "react-modal": "^3.11.2",
+    "react-qr-reader": "2.2.1",
     "react-redux": "7.1.0",
     "react-svg-inline": "^2.0.0",
     "react-text-mask": "5.4.3",

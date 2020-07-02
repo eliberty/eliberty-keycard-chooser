@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import KeyCard from './KeyCard/KeyCard';
+import KeyCard from './KeyCard';
 // import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 // import '../../node_modules/bootstrap-sass/assets/javascripts/bootstrap';
 

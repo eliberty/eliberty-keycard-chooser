@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import Autosuggest from 'react-autosuggest';
-import * as AutoSuggestionHelper from '../../helpers/AutoSuggest/MaskedInputAutoSuggestHelper';
-import * as tabKeycardType from '../../constants/keycardsType';
+import * as AutoSuggestionHelper from '../helpers/AutoSuggest/MaskedInputAutoSuggestHelper';
+import * as tabKeycardType from '../constants/keycardsType';
 
 const configs = {
   SKIDATA: {

@@ -4,11 +4,12 @@ import { FormattedMessage, injectIntl } from 'react-intl/dist/react-intl';
 import { Map } from 'immutable';
 import MaskedInput from 'react-text-mask';
 import Switch from 'react-toggle-switch';
-import PopoverQuestion from '../PopoverQuestion/PopoverQuestion';
-import PopoverLink from '../PopoverLink/PopoverLink';
-import CardNumberField from '../CardNumberField/CardNumberField';
-import * as tabKeycardType from '../../constants/keycardsType';
-import * as MaskHelper from '../../helpers/MaskHelper';
+import PopoverQuestion from './PopoverQuestion';
+import PopoverLink from './PopoverLink';
+import CardNumberField from './CardNumberField';
+import ModalQrCode from './ModalQrCode';
+import * as tabKeycardType from '../constants/keycardsType';
+import * as MaskHelper from '../helpers/MaskHelper';
 import {
   isCurrentCardNumberType,
   getCurrentCardNumberValue,
@@ -16,7 +17,7 @@ import {
   getCardNumberTypes,
   getCardNumberTypeElementProperty,
   isSwissPassPropertyValid,
-} from '../../helpers/CardTypeHelper';
+} from '../helpers/CardTypeHelper';
 
 const configs = {
   ZIPCODE: {
@@ -54,13 +55,25 @@ class KeyCard extends React.Component {
       checkNo: props.hasSupport,
       hasSupport: props.hasSupport,
       valid: true,
+      openModalQR: false,
     };
     this.handleChangeCardNumber = this.handleChangeCardNumber.bind(this);
     this.handleChangeAutoSuggestCardNumber = this.handleChangeAutoSuggestCardNumber.bind(this);
     this.changeValidationCard = this.changeValidationCard.bind(this);
     this.handleChangeCheckSwisspass = this.handleChangeCheckSwisspass.bind(this);
     this.handleChangeZipcode = this.handleChangeZipcode.bind(this);
+    this.handleChangeQRButton = this.handleChangeQRButton.bind(this);
   }
+
+  /**
+   * Change boolean value for qrCode modal
+   *
+   * @param {boolean} value
+   *
+   */
+  handleChangeQRButton(value) {
+    this.setState({ openModalQR: value});
+  };
 
   /**
    * Change local state when click support change value
@@ -470,6 +483,14 @@ class KeyCard extends React.Component {
 
                 {this.state.checkYes
                   ? <div className="msgCheckYes">
+                    <button type="button" className="qrCodeBtn" onClick={() => this.handleChangeQRButton(true)}>
+                      <FormattedMessage id="rp.checkout.keycard.qrcode.button" defaultMessage="QR Code" />
+                      <span />
+                    </button>
+                    <ModalQrCode
+                     // handleChangeQRButton={this.handleChangeQRButton}
+                      open={true}
+                    />
                     { this.renderedKeyCardTypesContent(keycardTypes) }
                   </div>
                   : ''}
